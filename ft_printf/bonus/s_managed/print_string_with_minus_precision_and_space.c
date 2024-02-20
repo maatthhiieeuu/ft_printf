@@ -13,17 +13,19 @@
 #include "libft.h"
 #include "../obligatory/printf/ft_printf.h"
 
+static void	print_str(t_format *option, char *string, size_t *size_string);
+
 void	print_string_with_minus_precision_and_space(t_format *option,
 		char *string, size_t size_string)
 {
 	size_t	j;
 
 	j = 0;
-	if (option == NULL || string == NULL)
+	if (option == NULL)
 		return ;
 	if (option->minus == true)
 	{
-		putnstr_bonus(option, string, option->precision_array);
+		print_str(option, string, &size_string);
 		if (option->precision_array < size_string)
 		{
 			while ((j) < (option->space_array - option->precision_array))
@@ -36,9 +38,22 @@ void	print_string_with_minus_precision_and_space(t_format *option,
 		{
 			while ((j) < (option->space_array - size_string))
 			{
-				putchar_bonus(option, ' ');
+				putchar_bonus (option, ' ');
 				j++;
 			}
 		}
 	}
+}
+
+static void	print_str(t_format *option, char *string, size_t *size_string)
+{
+	if (option == NULL)
+		return ;
+	if (string == NULL)
+	{
+		putstr_bonus(option, "(null)");
+		*size_string = 6;
+	}
+	else
+		putnstr_bonus(option, string, option->precision_array);
 }

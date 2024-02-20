@@ -1,4 +1,18 @@
-  char *str = "Test";
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
+#include "libft/libft.h"
+#include "../obligatory/printf/ft_printf.h"
+
+void fonctionSansRetourNiArguments(void);
+int fonctionAvecRetourEtSansArguments(void);
+char *fonctionAvecRetourEtAvecArguments(int, char);
+void maFonction(void); 
+
+int main(void)
+{   
+    char *str = "Test";
     int result_Or = -1;
     int result_Ft = -1;
     int x = 0;
@@ -3654,15 +3668,135 @@
     else if (result_Or == result_Ft)
         printf("\033[1m\033[32mOK.\n\n\033[0m");
 
-    ft_printf("%d\n", ft_printf("%s\n", NULL));
-    printf("%d\n", ft_printf("%s\n", NULL));
 
-    ft_printf("%d\n", ft_printf("%p\n", NULL));
-    printf("%d\n", printf("%p\n", NULL));
+    printf("\nTest : 322\n");
+    result_Or = printf("OR :|%s|\n", NULL);
+    result_Ft = ft_printf("FT :|%s|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
 
-    ft_printf("%d\n", ft_printf("%p%%%X\n", NULL));
-    printf("%d\n", printf("%p%%%X\n", NULL));
 
-    ft_printf("%d\n", ft_printf("%p%%%X\n", NULL, 789));
-    printf("%d\n", printf("%p%%%X\n", NULL, 789));
+    printf("\nTest : 323\n");
+    result_Or = printf("OR :|%p|\n", NULL);
+    result_Ft = ft_printf("FT :|%p|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
 
+    printf("\nTest : 324\n");
+    result_Or = printf("OR :|%p%%%X|\n", NULL);
+    result_Ft = ft_printf("FT :|%p%%%X|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+    printf("\nTest : 325\n");
+    result_Or = printf("OR :|%p%%%X|\n", NULL, 789);
+    result_Ft = ft_printf("FT :|%p%%%X|\n", NULL, 789);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	printf("\nTest : 326\n");
+    result_Or = printf("OR :|%10s|\n", NULL);
+    result_Ft = ft_printf("FT :|%10s|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+
+	printf("\nTest : 327\n");
+    result_Or = printf("OR :|%.10s|\n", NULL);
+    result_Ft = ft_printf("FT :|%.10s|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	printf("\nTest : 328\n");
+    result_Or = printf("OR :|%20.10s|\n", NULL);
+    result_Ft = ft_printf("FT :|%20.10s|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	printf("\nTest : 329\n");
+    result_Or = printf("OR :|%-20.10s|\n", NULL);
+    result_Ft = ft_printf("FT :|%-20.10s|\n", NULL);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	char *pon = 888884390000000;
+	printf("\nTest : 330\n");
+    result_Or = printf("OR :|%-20.10p|\n", pon);
+    result_Ft = ft_printf("FT :|%-20.10p|\n", pon);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	char *pin = 888884290000000;
+	printf("\nTest : 331\n");
+    result_Or = printf("OR :|%-20.10p|\n", pin);
+    result_Ft = ft_printf("FT :|%-20.10p|\n", pin);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	printf("\nTest : 332\n");
+    result_Or = printf("OR :|%d|\n", -2147483649);
+    result_Ft = ft_printf("FT :|%d|\n", -2147483649);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+
+	printf("\nTest : 333\n");
+    result_Or = printf("OR :|%d|\n", 2147483648);
+    result_Ft = ft_printf("FT :|%d|\n", 2147483648);
+    printf("result Or = %d\n", result_Or);
+    printf("result Ft = %d\n\n", result_Ft);
+    if (result_Or != result_Ft)
+        printf("\033[1m\033[31m-----------------------------------------------------Erreur -----------------------------------------------------------------------------------------------------.\n\n\n\n\n\033[0m");
+    else if (result_Or == result_Ft)
+        printf("\033[1m\033[32mOK.\n\n\033[0m");
+}
+
+    void fonctionSansRetourNiArguments() {}
+    int fonctionAvecRetourEtSansArguments() { return 0; }
+    char *fonctionAvecRetourEtAvecArguments(int a, char b) { return NULL; }
+    
+
+    

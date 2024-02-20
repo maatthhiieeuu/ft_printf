@@ -81,7 +81,7 @@ static void	with_minus(t_format *option)
 		write_space(option);
 	else if (option->precision_array < option->address_size)
 	{
-		while (option->address_size + i - 3 < option->space_array)
+		while (option->address_size + i - 2 < option->space_array)
 		{
 			putchar_bonus(option, ' ');
 			i += 1;

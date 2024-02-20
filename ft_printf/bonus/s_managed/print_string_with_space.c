@@ -13,43 +13,51 @@
 #include "libft.h"
 #include "../obligatory/printf/ft_printf.h"
 
-static void	print_without_minus(t_format *option, size_t size, char *string);
-static void	print_with_minus(t_format *option, size_t size, char *string);
+static void	print_without_minus(t_format *option, size_t *size, char *string);
+static void	print_with_minus(t_format *option, size_t *size, char *string);
 
 void	print_string_with_space(t_format *option, size_t size, char *string)
 {
-	if (option == NULL || string == NULL)
+	if (option == NULL)
 		return ;
+	if (string == NULL)
+		size = 6;
 	if (option->minus == false)
-		print_without_minus(option, size, string);
+		print_without_minus(option, &size, string);
 	else if (option->minus == true)
-		print_with_minus(option, size, string);
+		print_with_minus(option, &size, string);
 }
 
-static void	print_without_minus(t_format *option, size_t size, char *string)
+static void	print_without_minus(t_format *option, size_t *size, char *string)
 {
 	size_t	j;
 
 	j = 0;
-	if (option == NULL || string == NULL)
+	if (option == NULL)
 		return ;
-	while (size + j < option->space_array)
+	while (*size + j < option->space_array)
 	{
 		putchar_bonus(option, ' ');
 		j++;
 	}
-	putstr_bonus(option, string);
+	if (string == NULL)
+		putstr_bonus(option, "(null)");
+	else
+		putstr_bonus(option, string);
 }
 
-static void	print_with_minus(t_format *option, size_t size, char *string)
+static void	print_with_minus(t_format *option, size_t *size, char *string)
 {
 	size_t	j;
 
 	j = 0;
-	if (option == NULL || string == NULL)
+	if (option == NULL)
 		return ;
-	putstr_bonus(option, string);
-	while (size + j < option->space_array)
+	if (string == NULL)
+		putstr_bonus(option, "(null)");
+	else
+		putstr_bonus(option, string);
+	while (*size + j < option->space_array)
 	{
 		putchar_bonus(option, ' ');
 		j++;
